@@ -57,6 +57,8 @@ minikube profile dev1
 kubectl get deployments -A
 kubectl get pods -A
 kubectl get nodes -A
+kubectl get services -A
+kubectl get namespaces -A
 ```
 
 ### View k8s configurations
@@ -129,5 +131,6 @@ kubectl create -f resources/pv0001.yml
 
 [hello-minikube]: https://kubernetes.io/docs/tutorials/hello-minikube/
 [k8s-pull-image-private-registry]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+[k8s-nfs]: https://github.com/appscode/third-party-tools/blob/master/storage/nfs/README.md
 [minikube-release]: https://github.com/kubernetes/minikube/releases/tag/v1.33.1
 [minikube-kicbase]: https://github.com/kubernetes/minikube/pkgs/container/minikube%2Fkicbase
