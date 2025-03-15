@@ -27,54 +27,72 @@ are installed local to this project (minus container images).
 
 ### Initial Minikube configurations
 
+```
 minikube config set driver virtualbox
 minikube config set WantUpdateNotification false
+```
 
 ### View Minikube configurations
 
+```
 minikube config view
+```
 
 ### Start the cluster
 
+```
 minikube start --profile dev1
 minikube start --kubernetes-version=v1.27.5 --profile dev1 --driver=virtualbox 
+```
 
 ### Get or set the profile
 
+```
 minikube profile dev1
+```
 
 ### Verify entities in the current cluster / profile
 
+```
 kubectl get deployments -A
 kubectl get pods -A
 kubectl get nodes -A
-kubectl get pv -A
+```
 
 ### View k8s configurations
 
+```
 kubectl config view
+```
 
 ### Delete secret (i.e. dockerconfigjson)
 
+```
 kubectl delete secret kkdt --namespace home
+```
 
 ### Show existing secret
 
+```
 kubectl get secret
-
 kubectl get secret kkdt --namespace home [--output yaml]
+```
 
 ### Create k8s secret
 
+```
 kubectl create secret generic kkdt \
   --from-file $HOME/.docker/config.json \
   --type kubernetes.io/dockerconfigjson \
   --cluster dev1 \
   --namespace home
+```
 
 ### Get a shell to running container
 
+```
 kubectl exec --stdin --tty grafana -- /bin/bash
+```
 
 ### Mounts
 
@@ -101,8 +119,10 @@ thinh
 
 https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
+```
 kubectl get pv -A
 kubectl create -f pv0001.yml
+```
 
 
 [//]: Links
