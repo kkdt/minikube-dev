@@ -29,8 +29,8 @@ minikube config view
 
 ### Start the cluster
 
-minkube start --profile dev1
-minikube start --driver=virtualbox --kubernetes-version=v1.27.5 --profile dev1
+minikube start --profile dev1
+minikube start --kubernetes-version=v1.27.5 --profile dev1 --driver=virtualbox 
 
 ### Get or set the profile
 
@@ -70,3 +70,5 @@ kubectl exec --stdin --tty grafana -- /bin/bash
 [//]: Links
 
 [k8s-pull-image-private-registry]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+[minikube-release]: https://github.com/kubernetes/minikube/releases/tag/v1.33.1
+[minikube-kicbase]: https://github.com/kubernetes/minikube/pkgs/container/minikube%2Fkicbase

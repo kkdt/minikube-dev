@@ -4,6 +4,10 @@ __directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __default_minikube_install="${__directory}/bin"
 
 local-clean() {
+  if [ "${1}" == "all" ]; then
+    read -p "Confirm .minikbue and .kube deletes, hit ENTER to continue or CTRL-C to exit"
+  fi
+  
   rm -rf ${__directory}/build
 
   if [ "${1}" == "all" ]; then

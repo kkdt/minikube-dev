@@ -1,0 +1,7 @@
+{
+    "driver": "virtualbox",
+    "profile": "dev1",
+    "iso-url": "https://github.com/kubernetes/minikube/releases/download/v1.33.1/minikube-v1.33.1-amd64.iso",
+    "WantUpdateNotification": false,
+    "kubernetes-version": "v1.27.5"
+}
