@@ -121,7 +121,7 @@ https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
 ```
 kubectl get pv -A
-kubectl create -f pv0001.yml
+kubectl create -f resources/pv0001.yml
 ```
 
 
