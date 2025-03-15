@@ -1,0 +1,4 @@
+{
+    "driver": "podman",
+    "rootless": true
+}
