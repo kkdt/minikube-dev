@@ -18,15 +18,54 @@ are installed local to this project (minus container images).
 
 ## Commands
 
+### Initial Minikube configurations
+
 minikube config set driver virtualbox
 minikube config set WantUpdateNotification false
+
+### View Minikube configurations
+
+minikube config view
+
+### Start the cluster
+
+minkube start --profile dev1
 minikube start --driver=virtualbox --kubernetes-version=v1.27.5 --profile dev1
 
-minikube profile dev1
-minikube start -p dev1
+### Get or set the profile
 
-kubectl get pods -A 
+minikube profile dev1
+
+### Get pods in the current cluster / profile
+
+kubectl get pods -A
+
+### View k8s configurations
+
 kubectl config view
+
+### Delete secret (i.e. dockerconfigjson)
+
+kubectl delete secret kkdt --namespace home
+
+### Show existing secret
+
+kubectl get secret
+
+kubectl get secret kkdt --namespace home [--output yaml]
+
+### Create k8s secret
+
+kubectl create secret generic kkdt \
+  --from-file $HOME/.docker/config.json \
+  --type kubernetes.io/dockerconfigjson \
+  --cluster dev1 \
+  --namespace home
+
+### Get a shell to running container
+
+kubectl exec --stdin --tty grafana -- /bin/bash
+
 
 [//]: Links
 
