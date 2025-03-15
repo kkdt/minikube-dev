@@ -8,6 +8,7 @@ local-clean() {
 
   if [ "${1}" == "all" ]; then
     rm -rf ${__directory}/.minikube
+    rm -rf ${__directory}/.kube
   fi
 }
 
@@ -31,6 +32,10 @@ local-build() {
 #---------------------------------------------------------------
 
 export PATH=${__directory}/build/bin:$PATH
+
+export KUBECONFIG=${__directory}/.kube/config
+
+export KUBECACHEDIR=${__directory}/.kube/cache
 
 # No emoji icons
 export MINIKUBE_IN_STYLE=0

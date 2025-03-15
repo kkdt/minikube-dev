@@ -8,11 +8,12 @@ are installed local to this project (minus container images).
 1. Execute: `source bashrc`
 
 2. Execute: `local-build`
+
     - Pass in the minikube version you want to install locally, ex. `v1.33.1`
 
 3. Start minikube
     ````
-    minikube start --profile dev1 --driver=virtualbox --kubernetes-version=v1.27.5
+    minikube start --driver=virtualbox --kubernetes-version=v1.27.5
     ````
 
 ## Commands
@@ -23,4 +24,6 @@ minikube start --driver=virtualbox --kubernetes-version=v1.27.5 --profile dev1
 
 minikube profile dev1
 minikube start -p dev1
+
 kubectl get pods -A 
+kubectl config view
