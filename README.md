@@ -11,10 +11,17 @@ are installed local to this project (minus container images).
 
     - Pass in the minikube version you want to install locally, ex. `v1.33.1`
 
-3. Start minikube
+3. Use a prepackaged minikube profile to start, ex. virtualbox
+
+    - Execute: `mkdir -p .minikube/config`
+    - Execute: `cp drivers/virtualbox/config/config.json .minikube/config/.`
+
+4. Start minikube
     ````
-    minikube start --driver=virtualbox --kubernetes-version=v1.27.5
+    minikube start
     ````
+
+5. Execute: `kubectl config view`
 
 ## Commands
 
@@ -36,9 +43,12 @@ minikube start --kubernetes-version=v1.27.5 --profile dev1 --driver=virtualbox
 
 minikube profile dev1
 
-### Get pods in the current cluster / profile
+### Verify entities in the current cluster / profile
 
+kubectl get deployments -A
 kubectl get pods -A
+kubectl get nodes -A
+kubectl get pv -A
 
 ### View k8s configurations
 
@@ -66,9 +76,38 @@ kubectl create secret generic kkdt \
 
 kubectl exec --stdin --tty grafana -- /bin/bash
 
+### Mounts
+
+https://minikube.sigs.k8s.io/docs/handbook/mount/
+
+On the minikube virtual machine, `/hosthome` mounts the user HOME directory.
+
+```
+$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.2G  806M  2.4G  25% /
+devtmpfs        1.7G     0  1.7G   0% /dev
+tmpfs           1.8G   84K  1.8G   1% /dev/shm
+tmpfs           726M   11M  715M   2% /run
+tmpfs           1.8G  8.0K  1.8G   1% /tmp
+/dev/sda1        17G  1.1G   15G   7% /mnt/sda1
+hosthome        160G  8.1G  151G   6% /hosthome
+
+$ ls /hosthome/
+thinh
+```
+
+### Physical volumes
+
+https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+
+kubectl get pv -A
+kubectl create -f pv0001.yml
+
 
 [//]: Links
 
+[hello-minikube]: https://kubernetes.io/docs/tutorials/hello-minikube/
 [k8s-pull-image-private-registry]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 [minikube-release]: https://github.com/kubernetes/minikube/releases/tag/v1.33.1
 [minikube-kicbase]: https://github.com/kubernetes/minikube/pkgs/container/minikube%2Fkicbase
