@@ -74,6 +74,7 @@
         }
     ],
     "Addons": {
+        "dashboard": true,
         "default-storageclass": true,
         "storage-provisioner": true
     },
