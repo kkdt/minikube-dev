@@ -17,9 +17,10 @@ are installed local to this project (minus container images).
 
 ## Commands
 
+minikube config set driver virtualbox
+minikube config set WantUpdateNotification false
+minikube start --driver=virtualbox --kubernetes-version=v1.27.5 --profile dev1
+
 minikube profile dev1
 minikube start -p dev1
 kubectl get pods -A 
-
-minikube config set driver virtualbox
-minikube start --profile dev1 --driver=virtualbox --kubernetes-version=v1.27.5

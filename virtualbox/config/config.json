@@ -1,3 +1,4 @@
 {
+    "WantUpdateNotification": false,
     "driver": "virtualbox"
 }
