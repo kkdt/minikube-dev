@@ -27,3 +27,7 @@ minikube start -p dev1
 
 kubectl get pods -A 
 kubectl config view
+
+[//]: Links
+
+[k8s-pull-image-private-registry]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
