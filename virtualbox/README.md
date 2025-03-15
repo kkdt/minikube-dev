@@ -1,9 +1,15 @@
 # virtualbox
 
-## config.json 
+> Default `minikube` configurations
+
+## virtualbox/config/config.json
+
+.minikube/config/config.json
+
+## virtualbox/machines/config.json
 
 .minikube/machines/minikube/config.json
 
-## profile.json
+## virtualbox/profiles/config.json
 
 .minikube/profiles/minikube/config.json
