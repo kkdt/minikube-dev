@@ -2,6 +2,11 @@
     "driver": "virtualbox",
     "profile": "dev1",
     "iso-url": "https://github.com/kubernetes/minikube/releases/download/v1.33.1/minikube-v1.33.1-amd64.iso",
+    "kubernetes-version": "v1.27.5",
+    "native-ssh": false,
+    "v": 8,
+    "WantBetaUpdateNotification": false,
     "WantUpdateNotification": false,
-    "kubernetes-version": "v1.27.5"
+    "WantNoneDriverWarning": true,
+    "WantVirtualBoxDriverWarning": true
 }

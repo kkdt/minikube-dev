@@ -13,8 +13,10 @@ are installed local to this project (minus container images / virtualbox virtual
 
 3. Use a prepackaged minikube profile to start, ex. virtualbox
 
-    - Execute: `mkdir -p .minikube/config`
-    - Execute: `cp drivers/virtualbox/config/config.json .minikube/config/.`
+    ```
+    mkdir -p .minikube/config
+    cp drivers/virtualbox/config/config.json .minikube/config/.
+    ```
 
 4. Start minikube
     ````
@@ -125,6 +127,9 @@ https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 kubectl get pv -A
 kubectl create -f resources/pv0001.yml
 ```
+### SSH
+
+https://minikube.sigs.k8s.io/docs/commands/ssh/
 
 
 [//]: Links
