@@ -70,24 +70,24 @@ kubectl config view
 ### Delete secret (i.e. dockerconfigjson)
 
 ```
-kubectl delete secret kkdt --namespace home
+kubectl delete secret kkdt --namespace default
 ```
 
 ### Show existing secret
 
 ```
 kubectl get secret
-kubectl get secret kkdt --namespace home [--output yaml]
+kubectl get secret kkdt --namespace default [--output yaml]
 ```
 
 ### Create k8s secret
 
 ```
 kubectl create secret generic kkdt \
-  --from-file $HOME/.docker/config.json \
-  --type kubernetes.io/dockerconfigjson \
+  --from-file=.dockerconfigjson=$HOME/.docker/config.json \
+  --type=kubernetes.io/dockerconfigjson \
   --cluster dev1 \
-  --namespace home
+  --namespace default
 ```
 
 ### Get a shell to running container
