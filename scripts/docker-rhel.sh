@@ -10,4 +10,4 @@ sudo systemctl enable --now docker
 sudo usermod -G docker $USER
 
 echo "INFO: sudo docker run hello-world"
-echo "INFO: Run the above command to test out installation, also run it without sudo"
+echo "INFO: Run the above command to test out installation, also logout/in and run it without sudo"

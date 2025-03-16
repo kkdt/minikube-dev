@@ -17,9 +17,9 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 sudo usermod -G docker $USER
 
 echo "INFO: sudo docker run hello-world"
-echo "INFO: Run the above command to test out installation, also run it without sudo"
+echo "INFO: Run the above command to test out installation, also logout/in and run it without sudo"
