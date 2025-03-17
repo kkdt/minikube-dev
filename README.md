@@ -127,10 +127,24 @@ https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 kubectl get pv -A
 kubectl create -f resources/pv0001.yml
 ```
-### SSH
+### SSH / SSH driver
 
 https://minikube.sigs.k8s.io/docs/commands/ssh/
+https://github.com/kubernetes/minikube/labels/co%2Fgeneric-drive
 
+1. Ensure virtual machine has the host SSH keys as authorized_keys for `root`
+    ```
+    cat /shared/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
+    ```
+
+2. Install docker and restart 
+
+3. Start minikube using the drivers/ssh
+    ```
+    minikube start --ssh-ip-address 192.168.59.100 
+
+    [--ssh-user vagrant --ssh-port 2222]
+    ```
 
 [//]: Links
 
@@ -139,3 +153,4 @@ https://minikube.sigs.k8s.io/docs/commands/ssh/
 [k8s-nfs]: https://github.com/appscode/third-party-tools/blob/master/storage/nfs/README.md
 [minikube-release]: https://github.com/kubernetes/minikube/releases/tag/v1.33.1
 [minikube-kicbase]: https://github.com/kubernetes/minikube/pkgs/container/minikube%2Fkicbase
+[ubuntu-cri-o-container]: https://www.howtoforge.com/how-to-install-cri-o-container-runtime-on-ubuntu-22-04/

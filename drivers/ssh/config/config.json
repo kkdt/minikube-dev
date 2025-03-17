@@ -1,14 +1,14 @@
 {
-    "driver": "docker",
+    "driver": "ssh",
     "profile": "dev1",
     "iso-url": "https://github.com/kubernetes/minikube/releases/download/v1.33.1/minikube-v1.33.1-amd64.iso",
     "kubernetes-version": "v1.27.5",
     "rootless": false,
+    "native-ssh": false,
     "container-runtime": "docker",
-    "v": 8,
+    "v": 4,
     "WantBetaUpdateNotification": false,
     "WantUpdateNotification": false,
     "WantNoneDriverWarning": true,
     "WantVirtualBoxDriverWarning": false
-
 }
