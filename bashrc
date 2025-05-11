@@ -3,7 +3,7 @@
 __directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __default_minikube_install="${__directory}/bin"
 
-local-clean() {
+localclean() {
   if [ "${1}" == "all" ]; then
     read -p "Confirm .minikbue and .kube deletes, hit ENTER to continue or CTRL-C to exit"
   fi
@@ -16,19 +16,30 @@ local-clean() {
   fi
 }
 
-local-build() {
+localbuild() {
+  mkdir -p ${__directory}/build/bin
+  mkdir -p ${__directory}/.minikube/config
+  mkdir -p ${__directory}/.kube
+
   local __default_minikube="https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+  local __default_argocd="https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
 
   if [ ! -z "${1}" ]; then
     __default_minikube="https://storage.googleapis.com/minikube/releases/${1}/minikube-linux-amd64"
   fi
 
-  mkdir -p ${__directory}/build/bin
   wget -O ${__directory}/build/minikube-binary ${__default_minikube}
   if [ $? -ne 0 ]; then
     return 1
   fi
+
+  wget -O ${__directory}/build/argocd-binary ${__default_argocd}
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
+
   install ${__directory}/build/minikube-binary ${__directory}/build/bin/minikube && rm -f ${__directory}/build/minikube-binary
+  install ${__directory}/build/argocd-binary ${__directory}/build/bin/argocd && rm -f ${__directory}/build/argocd-binary
 }
 
 #---------------------------------------------------------------
@@ -58,6 +69,7 @@ export MINIKUBE_SUPPRESS_DOCKER_PERFORMANCE=true
 
 # set kubectl to be invoked via minikube
 alias kubectl="minikube kubectl --"
+alias k="minikube kubectl --"
 
 echo ""
 echo "-------------------------------------------------------------------------"

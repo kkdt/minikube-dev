@@ -7,7 +7,7 @@ are installed local to this project (minus container images / virtualbox virtual
 
 1. Execute: `source bashrc`
 
-2. Execute: `local-build`
+2. Execute: `localbuild`
 
     - Pass in the minikube version you want to install locally, ex. `v1.33.1`
 
