@@ -15,6 +15,8 @@ localbuild() {
   mkdir -p ${__dist}/.minikube/config
   mkdir -p ${__dist}/.kube
   mkdir -p ${__dist}/.helm
+  mkdir -p ${__dist}/.helm/plugins
+  mkdir -p ${__dist}/.helm/cache
 
   local __default_minikube="https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
   local __default_argocd="https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
@@ -74,9 +76,10 @@ export MINIKUBE_SUPPRESS_DOCKER_PERFORMANCE=true
 export HELM_HOME=${__directory}/build/.helm
 export HELM_REPOSITORY_CACHE=${HELM_HOME}/cache
 export HELM_PLUGIN_DIR=${HELM_HOME}/plugins
+export HELM_REPOSITORY_CONFIG=${HELM_HOME}/repositories.yaml
 export HELM_NAMESPACE=default
-export HELM_DEBUG=true
-export HELM_VERBOSE=true
+export HELM_DEBUG=false
+export HELM_VERBOSE=false
 
 
 # set kubectl to be invoked via minikube
@@ -100,5 +103,6 @@ echo "HELM_PLUGIN_DIR: ${HELM_PLUGIN_DIR}"
 echo "HELM_NAMESPACE: ${HELM_NAMESPACE}"
 echo "HELM_DEBUG: ${HELM_DEBUG}"
 echo "HELM_VERBOSE: ${HELM_VERBOSE}"
+echo "HELM_REPOSITORY_CONFIG: ${HELM_REPOSITORY_CONFIG}"
 echo "-------------------------------------------------------------------------"
 echo ""
