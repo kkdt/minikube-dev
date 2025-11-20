@@ -9,13 +9,13 @@ are installed local to this project (minus container images / virtualbox virtual
 
 2. Execute: `localbuild`
 
-    - Pass in the minikube version you want to install locally, ex. `v1.33.1`
+    - Pass in the minikube version you want to install locally, ex. `v1.33.1` or `latest`
 
 3. Use a prepackaged minikube profile to start, ex. virtualbox
 
     ```
-    mkdir -p .minikube/config
-    cp drivers/virtualbox/config/config.json .minikube/config/.
+    mkdir -p build/.minikube/config
+    cp drivers/virtualbox/config/config.json build/.minikube/config/.
     ```
 
 4. Start minikube
