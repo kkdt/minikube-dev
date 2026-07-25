@@ -147,6 +147,20 @@ https://github.com/kubernetes/minikube/labels/co%2Fgeneric-drive
     [--ssh-user vagrant --ssh-port 2222]
     ```
 
+### Minikube Package for Isolated Environments
+
+Minikube v1.38.1 (https://github.com/kubernetes/minikube/releases/tag/v1.38.1)
+
+1. Minikube executable
+    - Linux [minikube-linux-amd64](https://github.com/kubernetes/minikube/releases/download/v1.38.1/minikube-linux-amd64)
+    - Darwin [minikube-darwin-amd64](https://github.com/kubernetes/minikube/releases/download/v1.38.1/minikube-darwin-amd64)
+    - Darwin [minikube-darwin-arm64](https://github.com/kubernetes/minikube/releases/download/v1.38.1/minikube-darwin-arm64)
+2. Minikube ISO
+    - [minikube-v1.38.0-amd64.iso](https://github.com/kubernetes/minikube/releases/download/v1.38.0/minikube-v1.38.0-amd64.iso)
+3. Minikube Preloads
+    - [v18](https://github.com/kubernetes-sigs/minikube-preloads/releases/tag/v18)
+    - [preloaded-images-k8s-v18-v1.35.1-docker-overlay2-amd64.tar.lz4](https://github.com/kubernetes-sigs/minikube-preloads/releases/download/v18/preloaded-images-k8s-v18-v1.35.1-docker-overlay2-amd64.tar.lz4)
+
 [//]: Links
 
 [hello-minikube]: https://kubernetes.io/docs/tutorials/hello-minikube/
