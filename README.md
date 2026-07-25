@@ -21,6 +21,7 @@ are installed local to this project (minus container images / virtualbox virtual
 4. Start minikube
     ````
     minikube start
+    minikube start --cpus 2 --memory 8192 --disk-size 40g
     ````
 
 5. Execute: `kubectl config view`

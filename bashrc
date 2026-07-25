@@ -18,7 +18,7 @@ localbuild() {
   mkdir -p ${__dist}/.helm/plugins
   mkdir -p ${__dist}/.helm/cache
 
-  local __default_minikube="https://storage.googleapis.com/minikube/releases/v1.33.1/minikube-linux-amd64"
+  local __default_minikube="https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
   local __default_argocd="https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
   local __default_helm="https://get.helm.sh/helm-v3.19.0-rc.1-linux-amd64.tar.gz"
 
