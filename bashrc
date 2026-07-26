@@ -2,6 +2,10 @@
 
 __directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+localstart() {
+  minikube start --cpus 2 --memory 8192 --disk-size 40g
+}
+
 localclean() {
   read -p "Confirm .minikbue and .kube and .helm deletes, hit ENTER to continue or CTRL-C to exit"
   rm -rf ${__directory}/build
@@ -46,7 +50,8 @@ localbuild() {
   fi
   install ${__directory}/build/minikube-binary ${__bin}/minikube && rm -f ${__directory}/build/minikube-binary
   echo "... Minikube kubectl"
-  wget -q --show-progress -O "${__dist}/.minikube/cache/linux/amd64/${__minikube_kubectl_version}/kubectl" ${__minikube_kubectl}
+  wget -q --show-progress -O "${__dist}/.minikube/cache/linux/amd64/${__minikube_kubectl_version}/kubectl" ${__minikube_kubectl} \
+    && chmod 755 "${__dist}/.minikube/cache/linux/amd64/${__minikube_kubectl_version}/kubectl"
   if [ $? -ne 0 ]; then
     return 1
   fi
