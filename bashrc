@@ -11,34 +11,65 @@ localbuild() {
   local __dist=${__directory}/build
   local __bin=${__directory}/build/bin
 
-  mkdir -p ${__bin}
-  mkdir -p ${__dist}/.minikube/config
-  mkdir -p ${__dist}/.kube
-  mkdir -p ${__dist}/.helm
-  mkdir -p ${__dist}/.helm/plugins
-  mkdir -p ${__dist}/.helm/cache
+  local __minikube_version="v1.38.1"
+  local __minikube_kubectl_version="v1.35.1"
+  local __minikube_iso_version="v1.38.0"
+  local __minikube_preloaded_name="preloaded-images-k8s-v18-v1.35.1-docker-overlay2-amd64.tar.lz4"
 
-  local __default_minikube="https://storage.googleapis.com/minikube/releases/v1.38.1/minikube-linux-amd64"
+  local __minikube_binary="https://storage.googleapis.com/minikube/releases/${__minikube_version}/minikube-linux-amd64"
+  local __minikube_kubectl="https://dl.k8s.io/release/${__minikube_kubectl_version}/bin/linux/amd64/kubectl"
+  local __minikube_iso="https://github.com/kubernetes/minikube/releases/download/${__minikube_iso_version}/minikube-${__minikube_iso_version}-amd64.iso"
+  local __minikube_preloaded="https://github.com/kubernetes-sigs/minikube-preloads/releases/download/v18/${__minikube_preloaded_name}"
+  local __minikube_kic="gcr.io/k8s-minikube/kicbase:v0.0.50"
+
   local __default_argocd="https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
   local __default_helm="https://get.helm.sh/helm-v3.19.0-rc.1-linux-amd64.tar.gz"
 
-  if [ ! -z "${1}" ]; then
-    __default_minikube="https://storage.googleapis.com/minikube/releases/${1}/minikube-linux-amd64"
-  fi
+  echo "Creating directories"
+  mkdir -p "${__bin}"
+  mkdir -p "${__dist}/.minikube/config"
+  mkdir -p "${__dist}/.minikube/cache/iso/amd64"
+  mkdir -p "${__dist}/.minikube/cache/preloaded-tarball"
+  mkdir -p "${__dist}/.minikube/cache/linux/amd64/${__minikube_kubectl_version}"
+  mkdir -p "${__dist}/.minikube/cache/kic/amd64"
+  mkdir -p "${__dist}/.minikube/certs"
+  mkdir -p "${__dist}/.kube"
+  mkdir -p "${__dist}/.helm"
+  mkdir -p "${__dist}/.helm/plugins"
+  mkdir -p "${__dist}/.helm/cache"
 
-  wget -O ${__directory}/build/minikube-binary ${__default_minikube}
+  echo "Installing Minikube ${__minikube_version}"
+  echo "... Minikube binary"
+  wget -q --show-progress -O ${__directory}/build/minikube-binary ${__minikube_binary}
   if [ $? -ne 0 ]; then
     return 1
   fi
   install ${__directory}/build/minikube-binary ${__bin}/minikube && rm -f ${__directory}/build/minikube-binary
+  echo "... Minikube kubectl"
+  wget -q --show-progress -O "${__dist}/.minikube/cache/linux/amd64/${__minikube_kubectl_version}/kubectl" ${__minikube_kubectl}
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
+  echo "... Minikube iso"
+  wget -q --show-progress -O "${__dist}/.minikube/cache/iso/amd64/minikube-${__minikube_iso_version}-amd64.iso" ${__minikube_iso}
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
+  echo "... Minikube preloaded images"
+  wget -q --show-progress -O "${__dist}/.minikube/cache/preloaded-tarball/${__minikube_preloaded_name}" ${__minikube_preloaded}
+  if [ $? -ne 0 ]; then
+    return 1
+  fi
 
-  wget -O ${__directory}/build/argocd-binary ${__default_argocd}
+  echo "Installing ArgoCD"
+  wget -q --show-progress -O ${__directory}/build/argocd-binary ${__default_argocd}
   if [ $? -ne 0 ]; then
     return 1
   fi
   install ${__directory}/build/argocd-binary ${__bin}/argocd && rm -f ${__directory}/build/argocd-binary
 
-  wget -O ${__directory}/build/helm.tar.gz ${__default_helm}
+  echo "Installing Helm"
+  wget -q --show-progress -O ${__directory}/build/helm.tar.gz ${__default_helm}
   if [ $? -ne 0 ]; then
     return 1
   fi

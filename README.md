@@ -9,8 +9,6 @@ are installed local to this project (minus container images / virtualbox virtual
 
 2. Execute: `localbuild`
 
-    - Pass in the minikube version you want to install locally, ex. `v1.33.1` or `latest`
-
 3. Use a prepackaged minikube profile to start, ex. virtualbox
 
     ```
@@ -153,13 +151,17 @@ Minikube v1.38.1 (https://github.com/kubernetes/minikube/releases/tag/v1.38.1)
 
 1. Minikube executable
     - Linux [minikube-linux-amd64](https://github.com/kubernetes/minikube/releases/download/v1.38.1/minikube-linux-amd64)
-    - Darwin [minikube-darwin-amd64](https://github.com/kubernetes/minikube/releases/download/v1.38.1/minikube-darwin-amd64)
-    - Darwin [minikube-darwin-arm64](https://github.com/kubernetes/minikube/releases/download/v1.38.1/minikube-darwin-arm64)
 2. Minikube ISO
     - [minikube-v1.38.0-amd64.iso](https://github.com/kubernetes/minikube/releases/download/v1.38.0/minikube-v1.38.0-amd64.iso)
 3. Minikube Preloads
     - [v18](https://github.com/kubernetes-sigs/minikube-preloads/releases/tag/v18)
     - [preloaded-images-k8s-v18-v1.35.1-docker-overlay2-amd64.tar.lz4](https://github.com/kubernetes-sigs/minikube-preloads/releases/download/v18/preloaded-images-k8s-v18-v1.35.1-docker-overlay2-amd64.tar.lz4)
+4. Minikube kubectl
+    - [kubectl v1.35.1](https://dl.k8s.io/release/v1.35.1/bin/linux/amd64/kubectl)
+5. Minikube kicbase
+    - gcr.io/k8s-minikube/kicbase:v0.0.50
+
+![Minikube Cache](docs/minikube-cache.png)
 
 [//]: Links
 
